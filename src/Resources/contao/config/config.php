@@ -8,4 +8,3 @@
  */
 
 $GLOBALS['TL_IMMOMANAGER_ADDONS'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle', 'AddonManager');
-
