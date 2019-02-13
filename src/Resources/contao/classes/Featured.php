@@ -9,6 +9,7 @@
 
 namespace Oveleon\ContaoImmoManagerFeaturedBundle;
 
+use Oveleon\ContaoImmoManagerBundle\Translator;
 use Oveleon\ContaoImmoManagerBundle\RealEstateModel;
 
 class Featured
@@ -64,5 +65,36 @@ class Featured
         );
 
         $objRealEstate = RealEstateModel::findBy($arrColumns, null, $arrOptions);
+    }
+
+
+    /**
+     * Add status token for featured objects
+     *
+     * @param $objTemplate
+     * @param $realEstate
+     * @param $context
+     */
+    public function addStatusToken(&$objTemplate, $realEstate, $context)
+    {
+        $tokens = \StringUtil::deserialize($context->statusTokens);
+
+        if(!$tokens){
+            return;
+        }
+        
+        if (in_array('featured', $tokens) && $realEstate->objRealEstate->featuredObject)
+        {
+            $objTemplate->arrStatusTokens = array_merge(
+                $objTemplate->arrStatusTokens,
+                array
+                (
+                    array(
+                        'value' => Translator::translateValue('featuredObject'),
+                        'class' => 'featured'
+                    )
+                )
+            );
+        }
     }
 }
