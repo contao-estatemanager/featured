@@ -43,6 +43,14 @@ Contao\CoreBundle\DataContainer\PaletteManipulator::create()
  */
 class tl_real_estate_featured extends Backend
 {
+    /**
+     * Import the back end user object
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->import('BackendUser', 'User');
+    }
 
     /**
      * Return the "featured object" button
