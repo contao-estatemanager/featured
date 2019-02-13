@@ -53,6 +53,14 @@ class tl_real_estate_featured extends Backend
     }
 
     /**
+     * Check permissions to edit table tl_real_estate
+     */
+    public function checkPermission()
+    {
+        return;
+    }
+
+    /**
      * Return the "featured object" button
      *
      * @param array  $row
@@ -131,7 +139,7 @@ class tl_real_estate_featured extends Backend
         }
 
         // Update the database
-        $this->Database->prepare("UPDATE tl_real_estate SET tstamp=". time() .", topObjekt='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
+        $this->Database->prepare("UPDATE tl_real_estate SET tstamp=". time() .", featuredObject='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
             ->execute($intId);
 
         $objVersions->create();

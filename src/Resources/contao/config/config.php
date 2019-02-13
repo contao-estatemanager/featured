@@ -8,3 +8,6 @@
  */
 
 $GLOBALS['TL_IMMOMANAGER_ADDONS'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle', 'AddonManager');
+
+$GLOBALS['TL_HOOKS']['realEstateListCountItems'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'countItems');
+$GLOBALS['TL_HOOKS']['realEstateListFetchItems'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'fetchItems');
