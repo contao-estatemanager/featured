@@ -13,4 +13,6 @@ $GLOBALS['TL_IMMOMANAGER_ADDONS'][] = array('Oveleon\\ContaoImmoManagerFeaturedB
 // HOOKS
 $GLOBALS['TL_HOOKS']['realEstateListCountItems'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'countItems');
 $GLOBALS['TL_HOOKS']['realEstateListFetchItems'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'fetchItems');
+
 $GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'addStatusToken');
+$GLOBALS['TL_HOOKS']['compileExposeStatusToken'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'addStatusToken');
