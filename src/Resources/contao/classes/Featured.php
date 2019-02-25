@@ -95,8 +95,6 @@ class Featured
                     )
                 )
             );
-
-            $context->isEmpty = !count($objTemplate->arrStatusTokens);
         }
     }
 }
