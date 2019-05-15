@@ -31,7 +31,7 @@ array_insert($GLOBALS['TL_DCA']['tl_real_estate']['fields'], -1, array(
 
 // Extend the default palettes
 Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addLegend('featured_object_legend', 'real_estate_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
+    ->addLegend('featured_object_legend', 'real_estate_media_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
     ->addField(array('featuredObject'), 'featured_object_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
     ->applyToPalette('default', 'tl_real_estate')
 ;
