@@ -10,9 +10,11 @@
 // IMMOMANAGER
 $GLOBALS['TL_IMMOMANAGER_ADDONS'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle', 'AddonManager');
 
-// HOOKS
-$GLOBALS['TL_HOOKS']['countItemsRealEstateList'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'countItems');
-$GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'fetchItems');
+if(Oveleon\ContaoImmoManagerFeaturedBundle\AddonManager::valid()){
+    // HOOKS
+    $GLOBALS['TL_HOOKS']['countItemsRealEstateList'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'countItems');
+    $GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'fetchItems');
 
-$GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'addStatusToken');
-$GLOBALS['TL_HOOKS']['compileExposeStatusToken'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'addStatusToken');
+    $GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'addStatusToken');
+    $GLOBALS['TL_HOOKS']['compileExposeStatusToken'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'addStatusToken');
+}

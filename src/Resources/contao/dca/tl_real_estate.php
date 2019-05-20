@@ -6,36 +6,36 @@
  * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
  * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
  */
+if(Oveleon\ContaoImmoManagerFeaturedBundle\AddonManager::valid()) {
+    // Add operations
+    array_insert($GLOBALS['TL_DCA']['tl_real_estate']['list']['operations'], -1, array(
+        'featuredObject' => array
+        (
+            'label'               => &$GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'],
+            'icon'                => 'featured.svg',
+            'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleFeaturedObject(this,%s)"',
+            'button_callback'     => array('tl_real_estate_featured', 'iconFeaturedObject')
+        )
+    ));
 
-// Add operations
-array_insert($GLOBALS['TL_DCA']['tl_real_estate']['list']['operations'], -1, array(
-    'featuredObject' => array
-    (
-        'label'               => &$GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'],
-        'icon'                => 'featured.svg',
-        'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleFeaturedObject(this,%s)"',
-        'button_callback'     => array('tl_real_estate_featured', 'iconFeaturedObject')
-    )
-));
+    // Add field
+    array_insert($GLOBALS['TL_DCA']['tl_real_estate']['fields'], -1, array(
+        'featuredObject'  => array
+        (
+            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'],
+            'inputType'                 => 'checkbox',
+            'eval'                      => array('tl_class' => 'w50 m12'),
+            'sql'                       => "char(1) NOT NULL default '0'",
+        )
+    ));
 
-// Add field
-array_insert($GLOBALS['TL_DCA']['tl_real_estate']['fields'], -1, array(
-    'featuredObject'  => array
-    (
-        'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'],
-        'inputType'                 => 'checkbox',
-        'eval'                      => array('tl_class' => 'w50 m12'),
-        'sql'                       => "char(1) NOT NULL default '0'",
-    )
-));
-
-// Extend the default palettes
-Contao\CoreBundle\DataContainer\PaletteManipulator::create()
-    ->addLegend('featured_object_legend', 'real_estate_media_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
-    ->addField(array('featuredObject'), 'featured_object_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
-    ->applyToPalette('default', 'tl_real_estate')
-;
-
+    // Extend the default palettes
+    Contao\CoreBundle\DataContainer\PaletteManipulator::create()
+        ->addLegend('featured_object_legend', 'real_estate_media_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_AFTER)
+        ->addField(array('featuredObject'), 'featured_object_legend', Contao\CoreBundle\DataContainer\PaletteManipulator::POSITION_APPEND)
+        ->applyToPalette('default', 'tl_real_estate')
+    ;
+}
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
