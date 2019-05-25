@@ -7,7 +7,15 @@
  * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
-if(ContaoEstateManager\Featured\AddonManager::valid()) {
-    // Extend estate manager statusTokens field options
-    array_insert($GLOBALS['TL_DCA']['tl_expose_module']['fields']['statusTokens']['options'], -1, array('featured'));
+
+declare(strict_types=1);
+
+
+
+namespace ContaoEstateManager\Featured;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class Featured extends Bundle
+{
 }

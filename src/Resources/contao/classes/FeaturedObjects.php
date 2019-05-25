@@ -1,18 +1,19 @@
 <?php
 /**
- * This file is part of Oveleon ImmoManager.
+ * This file is part of Contao EstateManager.
  *
- * @link      https://github.com/oveleon/contao-immo-manager-bundle
- * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
- * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+ * @link      https://www.contao-estatemanager.com/
+ * @source    https://github.com/contao-estatemanager/featured
+ * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-namespace Oveleon\ContaoImmoManagerFeaturedBundle;
+namespace ContaoEstateManager\Featured;
 
-use Oveleon\ContaoImmoManagerBundle\Translator;
-use Oveleon\ContaoImmoManagerBundle\RealEstateModel;
+use ContaoEstateManager\Translator;
+use ContaoEstateManager\RealEstateModel;
 
-class Featured
+class FeaturedObjects
 {
     /**
      * Table

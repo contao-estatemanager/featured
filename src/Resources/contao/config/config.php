@@ -1,20 +1,21 @@
 <?php
 /**
- * This file is part of Oveleon ImmoManager.
+ * This file is part of Contao EstateManager.
  *
- * @link      https://github.com/oveleon/contao-immo-manager-bundle
- * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
- * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+ * @link      https://www.contao-estatemanager.com/
+ * @source    https://github.com/contao-estatemanager/featured
+ * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 
-// IMMOMANAGER
-$GLOBALS['TL_IMMOMANAGER_ADDONS'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle', 'AddonManager');
+// ESTATEMANAGER
+$GLOBALS['TL_ESTATEMANAGER_ADDONS'][] = array('ContaoEstateManager\\Featured', 'AddonManager');
 
-if(Oveleon\ContaoImmoManagerFeaturedBundle\AddonManager::valid()){
+if(ContaoEstateManager\Featured\AddonManager::valid()){
     // HOOKS
-    $GLOBALS['TL_HOOKS']['countItemsRealEstateList'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'countItems');
-    $GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'fetchItems');
+    $GLOBALS['TL_HOOKS']['countItemsRealEstateList'][] = array('ContaoEstateManager\\Featured\\FeaturedObjects', 'countItems');
+    $GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'][] = array('ContaoEstateManager\\Featured\\FeaturedObjects', 'fetchItems');
 
-    $GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'addStatusToken');
-    $GLOBALS['TL_HOOKS']['compileExposeStatusToken'][] = array('Oveleon\\ContaoImmoManagerFeaturedBundle\\Featured', 'addStatusToken');
+    $GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('ContaoEstateManager\\Featured\\FeaturedObjects', 'addStatusToken');
+    $GLOBALS['TL_HOOKS']['compileExposeStatusToken'][] = array('ContaoEstateManager\\Featured\\FeaturedObjects', 'addStatusToken');
 }

@@ -1,15 +1,16 @@
 <?php
 /**
- * This file is part of Oveleon ImmoManager.
+ * This file is part of Contao EstateManager.
  *
- * @link      https://github.com/oveleon/contao-immo-manager-bundle
- * @copyright Copyright (c) 2018-2019  Oveleon GbR (https://www.oveleon.de)
- * @license   https://github.com/oveleon/contao-immo-manager-bundle/blob/master/LICENSE
+ * @link      https://www.contao-estatemanager.com/
+ * @source    https://github.com/contao-estatemanager/featured
+ * @copyright Copyright (c) 2019  Oveleon GbR (https://www.oveleon.de)
+ * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
-if(Oveleon\ContaoImmoManagerFeaturedBundle\AddonManager::valid()) {
-    // Extend immo manager listMode field options
+if(ContaoEstateManager\Featured\AddonManager::valid()) {
+    // Extend estate manager listMode field options
     array_insert($GLOBALS['TL_DCA']['tl_module']['fields']['listMode']['options'], -1, array('featured'));
 
-    // Extend immo manager statusTokens field options
+    // Extend estate manager statusTokens field options
     array_insert($GLOBALS['TL_DCA']['tl_module']['fields']['statusTokens']['options'], -1, array('featured'));
 }
