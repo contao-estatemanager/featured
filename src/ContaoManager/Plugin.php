@@ -16,7 +16,7 @@ use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
-use ContaoEstateManager\Featured\FeaturedObjects;
+use ContaoEstateManager\Featured\Featured;
 
 class Plugin implements BundlePluginInterface
 {
@@ -26,7 +26,7 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser): array
     {
         return [
-            BundleConfig::create(FeaturedObjects::class)
+            BundleConfig::create(Featured::class)
                 ->setLoadAfter([ContaoCoreBundle::class])
                 ->setReplace(['featured']),
         ];
