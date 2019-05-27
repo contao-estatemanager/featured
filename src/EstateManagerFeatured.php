@@ -16,6 +16,6 @@ namespace ContaoEstateManager\Featured;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class Featured extends Bundle
+class EstateManagerFeatured extends Bundle
 {
 }
