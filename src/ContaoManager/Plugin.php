@@ -27,8 +27,8 @@ class Plugin implements BundlePluginInterface
     {
         return [
             BundleConfig::create(EstateManagerFeatured::class)
-                ->setLoadAfter([ContaoCoreBundle::class])
-                ->setReplace(['featured']),
+                ->setLoadAfter([ContaoCoreBundle::class, EstateManager::class])
+                ->setReplace(['estatemanager-featured']),
         ];
     }
 }
