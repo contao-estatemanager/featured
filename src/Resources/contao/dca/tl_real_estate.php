@@ -24,6 +24,7 @@ if(ContaoEstateManager\Featured\AddonManager::valid()) {
         'featuredObject'  => array
         (
             'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'],
+            'filter'                    => true,
             'inputType'                 => 'checkbox',
             'eval'                      => array('tl_class' => 'w50 m12'),
             'sql'                       => "char(1) NOT NULL default '0'",
