@@ -143,7 +143,7 @@ class tl_real_estate_featured extends Backend
         }
 
         // Update the database
-        $this->Database->prepare("UPDATE tl_real_estate SET tstamp=". time() .", featuredObject='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
+        $this->Database->prepare("UPDATE tl_real_estate SET tstamp=". time() .", featuredObject='" . ($blnVisible ? 1 : 0) . "' WHERE id=?")
             ->execute($intId);
 
         $objVersions->create();
