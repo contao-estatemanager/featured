@@ -8,6 +8,8 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 if(ContaoEstateManager\Featured\AddonManager::valid()) {
+    $GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks'][] = array('tl_real_estate_featured', 'addFeaturedInformation');
+
     // Add operations
     array_insert($GLOBALS['TL_DCA']['tl_real_estate']['list']['operations'], -1, array(
         'featuredObject' => array
@@ -145,5 +147,28 @@ class tl_real_estate_featured extends Backend
             ->execute($intId);
 
         $objVersions->create();
+    }
+
+    /**
+     * Add featured flag
+     *
+     * @param array         $row
+     * @param string        $label
+     * @param DataContainer $dc
+     * @param array         $args
+     *
+     * @return array
+     */
+    public function addFeaturedInformation($row, $label, DataContainer $dc, $args)
+    {
+        if (!$row['featuredObject'])
+        {
+            return $args;
+        }
+
+        // add reference information
+        $args[0] .= '<span class="token" style="background-color:#fff80c;" title="' . $GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'][0] . '">F</span>';
+
+        return $args;
     }
 }
