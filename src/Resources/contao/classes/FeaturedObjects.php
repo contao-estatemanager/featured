@@ -40,7 +40,7 @@ class FeaturedObjects
 
         $arrColumns[] = "$this->strTable.featuredObject=1";
 
-        $intCount = RealEstateModel::countBy($arrColumns);
+        $intCount = RealEstateModel::countBy($arrColumns, $arrValues);
     }
 
     /**
@@ -66,7 +66,7 @@ class FeaturedObjects
 
         $arrColumns[] = "$this->strTable.featuredObject=1";
 
-        $objRealEstate = RealEstateModel::findBy($arrColumns, null, $arrOptions);
+        $objRealEstate = RealEstateModel::findBy($arrColumns, $arrValues, $arrOptions);
     }
 
 
