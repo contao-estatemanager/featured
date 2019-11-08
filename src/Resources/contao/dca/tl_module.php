@@ -8,6 +8,9 @@
  * @license   https://www.contao-estatemanager.com/lizenzbedingungen.html
  */
 if(ContaoEstateManager\Featured\AddonManager::valid()) {
+    // Subpalettes
+    $GLOBALS['TL_DCA']['tl_module']['subpalettes']['listMode_featured'] = 'realEstateGroups,filterMode';
+
     // Extend estate manager listMode field options
     array_insert($GLOBALS['TL_DCA']['tl_module']['fields']['listMode']['options'], -1, array('featured'));
 

@@ -10,6 +10,7 @@
 
 namespace ContaoEstateManager\Featured;
 
+use ContaoEstateManager\FilterSession;
 use ContaoEstateManager\Translator;
 use ContaoEstateManager\RealEstateModel;
 
@@ -33,10 +34,11 @@ class FeaturedObjects
             return;
         }
 
-        $arrColumns = array(
-            "$this->strTable.published=1",
-            "$this->strTable.featuredObject=1"
-        );
+        $objFilterSession = FilterSession::getInstance();
+
+        list($arrColumns, $arrValues, $arrOptions) = $objFilterSession->getTypeParameterByGroups($context->realEstateGroups, $context->filterMode, false, $context);
+
+        $arrColumns[] = "$this->strTable.featuredObject=1";
 
         $intCount = RealEstateModel::countBy($arrColumns);
     }
@@ -55,15 +57,14 @@ class FeaturedObjects
             return;
         }
 
-        $arrOptions = array(
-            'limit' => $limit,
-            'offset' => $offset
-        );
+        $objFilterSession = FilterSession::getInstance();
 
-        $arrColumns = array(
-            "$this->strTable.published=1",
-            "$this->strTable.featuredObject=1"
-        );
+        list($arrColumns, $arrValues, $arrOptions) = $objFilterSession->getTypeParameterByGroups($context->realEstateGroups, $context->filterMode, false, $context);
+
+        $arrOptions['limit'] = $limit;
+        $arrOptions['offset'] = $offset;
+
+        $arrColumns[] = "$this->strTable.featuredObject=1";
 
         $objRealEstate = RealEstateModel::findBy($arrColumns, null, $arrOptions);
     }
