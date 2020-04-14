@@ -47,22 +47,25 @@ class FeaturedObjects
      * Fetch featured objects
      *
      * @param $objRealEstate
-     * @param $limit
-     * @param $offset
+     * @param $arrOptions
      * @param $context
      */
-    public function fetchItems(&$objRealEstate, $limit, $offset, $context)
+    public function fetchItems(&$objRealEstate, &$arrOptions, $context)
     {
+        if ($context->prependFeaturedObjects)
+        {
+            $arrOptions['order'] = "tl_real_estate.featuredObject DESC" . ($arrOptions['order'] ? ', ' . $arrOptions['order'] : '');
+        }
+
         if($context->listMode !== 'featured'){
             return;
         }
 
         $objFilterSession = FilterSession::getInstance();
 
-        list($arrColumns, $arrValues, $arrOptions) = $objFilterSession->getTypeParameterByGroups($context->realEstateGroups, $context->filterMode, false, $context);
+        list($arrColumns, $arrValues, $options) = $objFilterSession->getTypeParameterByGroups($context->realEstateGroups, $context->filterMode, false, $context);
 
-        $arrOptions['limit'] = $limit;
-        $arrOptions['offset'] = $offset;
+        $arrOptions = array_merge($options, $arrOptions);
 
         $arrColumns[] = "$this->strTable.featuredObject=1";
 
