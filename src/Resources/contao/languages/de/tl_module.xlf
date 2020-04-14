@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_module.prependFeaturedObjects.0">
+        <source>Prepare featured properties</source>
+        <target>Top-Objekte voranstellen</target>
+      </trans-unit>
+      <trans-unit id="tl_module.prependFeaturedObjects.1">
+        <source>Displays top objects first in lists.</source>
+        <target>Zeigt Top-Objekte als erstes in Listen an.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
