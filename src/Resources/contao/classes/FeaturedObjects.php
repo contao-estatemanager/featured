@@ -10,6 +10,7 @@
 
 namespace ContaoEstateManager\Featured;
 
+use Contao\StringUtil;
 use ContaoEstateManager\FilterSession;
 use ContaoEstateManager\Translator;
 use ContaoEstateManager\RealEstateModel;
@@ -82,12 +83,12 @@ class FeaturedObjects
      */
     public function addStatusToken(&$objTemplate, $realEstate, $context)
     {
-        $tokens = \StringUtil::deserialize($context->statusTokens);
+        $tokens = StringUtil::deserialize($context->statusTokens);
 
         if(!$tokens){
             return;
         }
-        
+
         if (in_array('featured', $tokens) && $realEstate->objRealEstate->featuredObject)
         {
             $objTemplate->arrStatusTokens = array_merge(
