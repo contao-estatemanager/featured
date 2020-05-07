@@ -11,27 +11,23 @@ if(ContaoEstateManager\Featured\AddonManager::valid()) {
     $GLOBALS['TL_DCA']['tl_real_estate']['list']['label']['post_label_callbacks'][] = array('tl_real_estate_featured', 'addFeaturedInformation');
 
     // Add operations
-    array_insert($GLOBALS['TL_DCA']['tl_real_estate']['list']['operations'], -1, array(
-        'featuredObject' => array
-        (
-            'label'               => &$GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'],
-            'icon'                => 'featured.svg',
-            'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleFeaturedObject(this,%s)"',
-            'button_callback'     => array('tl_real_estate_featured', 'iconFeaturedObject')
-        )
-    ));
+    $GLOBALS['TL_DCA']['tl_real_estate']['list']['operations']['featuredObject'] = array
+    (
+        'label'               => &$GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'],
+        'icon'                => 'featured.svg',
+        'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleFeaturedObject(this,%s)"',
+        'button_callback'     => array('tl_real_estate_featured', 'iconFeaturedObject')
+    );
 
     // Add field
-    array_insert($GLOBALS['TL_DCA']['tl_real_estate']['fields'], -1, array(
-        'featuredObject'  => array
-        (
-            'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'],
-            'filter'                    => true,
-            'inputType'                 => 'checkbox',
-            'eval'                      => array('tl_class' => 'w50 m12'),
-            'sql'                       => "char(1) NOT NULL default '0'",
-        )
-    ));
+    $GLOBALS['TL_DCA']['tl_real_estate']['fields']['featuredObject'] = array
+    (
+        'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'],
+        'filter'                    => true,
+        'inputType'                 => 'checkbox',
+        'eval'                      => array('tl_class' => 'w50 m12'),
+        'sql'                       => "char(1) NOT NULL default '0'",
+    );
 
     // Extend the default palettes
     Contao\CoreBundle\DataContainer\PaletteManipulator::create()
@@ -78,9 +74,9 @@ class tl_real_estate_featured extends Backend
      */
     public function iconFeaturedObject($row, $href, $label, $title, $icon, $attributes)
     {
-        if (\strlen(Input::get('toid')))
+        if (\strlen(Contao\Input::get('toid')))
         {
-            $this->toggleFeaturedObject(Input::get('toid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
+            $this->toggleFeaturedObject(Contao\Input::get('toid'), (Contao\Input::get('state') == 1), (@func_get_arg(12) ?: null));
             $this->redirect($this->getReferer());
         }
 
@@ -97,23 +93,23 @@ class tl_real_estate_featured extends Backend
             $icon = 'featured_.svg';
         }
 
-        return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['featuredObject'] ? 1 : 0) . '"').'</a> ';
+        return '<a href="'.$this->addToUrl($href).'" title="'.Contao\StringUtil::specialchars($title).'"'.$attributes.'>'.Contao\Image::getHtml($icon, $label, 'data-state="' . ($row['featuredObject'] ? 1 : 0) . '"').'</a> ';
     }
 
     /**
      * Toggle top object flag for a real estate
      *
-     * @param integer       $intId
-     * @param boolean       $blnVisible
-     * @param DataContainer $dc
+     * @param integer               $intId
+     * @param boolean               $blnVisible
+     * @param Contao\DataContainer  $dc
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
-    public function toggleFeaturedObject($intId, $blnVisible, DataContainer $dc=null)
+    public function toggleFeaturedObject($intId, $blnVisible, Contao\DataContainer $dc=null)
     {
         // Check permissions to edit
-        Input::setGet('id', $intId);
-        Input::setGet('act', 'featuredObject');
+        Contao\Input::setGet('id', $intId);
+        Contao\Input::setGet('act', 'featuredObject');
         $this->checkPermission();
 
         // Check permissions to feature
@@ -122,7 +118,7 @@ class tl_real_estate_featured extends Backend
             throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to declare top object flag for item ID ' . $intId . '.');
         }
 
-        $objVersions = new Versions('tl_real_estate', $intId);
+        $objVersions = new Contao\Versions('tl_real_estate', $intId);
         $objVersions->initialize();
 
         // Trigger the save_callback
@@ -152,14 +148,14 @@ class tl_real_estate_featured extends Backend
     /**
      * Add featured flag
      *
-     * @param array         $row
-     * @param string        $label
-     * @param DataContainer $dc
-     * @param array         $args
+     * @param array                 $row
+     * @param string                $label
+     * @param Contao\DataContainer  $dc
+     * @param array                 $args
      *
      * @return array
      */
-    public function addFeaturedInformation($row, $label, DataContainer $dc, $args)
+    public function addFeaturedInformation($row, $label, Contao\DataContainer $dc, $args)
     {
         if (!$row['featuredObject'])
         {

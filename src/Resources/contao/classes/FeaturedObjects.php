@@ -29,7 +29,7 @@ class FeaturedObjects
      * @param $intCount
      * @param $context
      */
-    public function countItems(&$intCount, $context)
+    public function countItems(&$intCount, $context): void
     {
         if($context->listMode !== 'featured'){
             return;
@@ -51,7 +51,7 @@ class FeaturedObjects
      * @param $arrOptions
      * @param $context
      */
-    public function fetchItems(&$objRealEstate, &$arrOptions, $context)
+    public function fetchItems(&$objRealEstate, &$arrOptions, $context): void
     {
         if ($context->prependFeaturedObjects)
         {
@@ -81,7 +81,7 @@ class FeaturedObjects
      * @param $realEstate
      * @param $context
      */
-    public function addStatusToken(&$objTemplate, $realEstate, $context)
+    public function addStatusToken(&$objTemplate, $realEstate, $context): void
     {
         $tokens = StringUtil::deserialize($context->statusTokens);
 

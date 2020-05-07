@@ -2,7 +2,7 @@
   "name":"contao-estatemanager/featured",
   "type":"contao-bundle",
   "description":"Featured Extension for Contao EstateManager",
-  "keywords":["contao","estatemanager","real estate","estate","property","featured"],
+  "keywords":["contao", "immobilien", "manager", "property", "realestate","featured","top"],
   "homepage":"https://www.contao-estatemanager.com/",
   "license":"proprietary",
   "authors":[

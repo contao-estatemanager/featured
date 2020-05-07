@@ -12,9 +12,9 @@
 $GLOBALS['TL_ESTATEMANAGER_ADDONS'][] = array('ContaoEstateManager\\Featured', 'AddonManager');
 
 if(ContaoEstateManager\Featured\AddonManager::valid()){
-    // HOOKS
+    // Hooks
     $GLOBALS['TL_HOOKS']['countItemsRealEstateList'][] = array('ContaoEstateManager\\Featured\\FeaturedObjects', 'countItems');
-    array_insert($GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'], -1, [array('ContaoEstateManager\\Featured\\FeaturedObjects', 'fetchItems')]);
+    $GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'][] = array('ContaoEstateManager\\Featured\\FeaturedObjects', 'fetchItems');
 
     $GLOBALS['TL_HOOKS']['parseRealEstate'][] = array('ContaoEstateManager\\Featured\\FeaturedObjects', 'addStatusToken');
     $GLOBALS['TL_HOOKS']['compileExposeStatusToken'][] = array('ContaoEstateManager\\Featured\\FeaturedObjects', 'addStatusToken');
