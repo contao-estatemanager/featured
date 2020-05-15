@@ -23,6 +23,7 @@ if(ContaoEstateManager\Featured\AddonManager::valid()) {
     $GLOBALS['TL_DCA']['tl_real_estate']['fields']['featuredObject'] = array
     (
         'label'                     => &$GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'],
+        'exclude'                   => true,
         'filter'                    => true,
         'inputType'                 => 'checkbox',
         'eval'                      => array('tl_class' => 'w50 m12'),
