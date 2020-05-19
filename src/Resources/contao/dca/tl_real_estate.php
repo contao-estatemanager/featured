@@ -67,7 +67,7 @@ class tl_real_estate_featured extends Contao\Backend
      *
      * @return string
      */
-    public function iconFeaturedObject(array $row, string $href, string $label, string $title, string $icon, string $attributes): string
+    public function iconFeaturedObject(array $row, ?string $href, string $label, string $title, string $icon, string $attributes): string
     {
         if (strlen(Contao\Input::get('toid')))
         {
