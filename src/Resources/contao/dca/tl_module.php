@@ -21,6 +21,7 @@ if(ContaoEstateManager\Featured\AddonManager::valid()) {
     $GLOBALS['TL_DCA']['tl_module']['fields']['prependFeaturedObjects'] = array
     (
         'label'                     => &$GLOBALS['TL_LANG']['tl_module']['prependFeaturedObjects'],
+        'exclude'                   => true,
         'inputType'                 => 'checkbox',
         'eval'                      => array('tl_class' => 'm12 w50'),
         'sql'                       => "char(1) NOT NULL default '0'",
