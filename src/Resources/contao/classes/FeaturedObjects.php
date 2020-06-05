@@ -77,29 +77,17 @@ class FeaturedObjects
     /**
      * Add status token for featured objects
      *
-     * @param $objTemplate
-     * @param $realEstate
+     * @param $validStatusToken
+     * @param $arrStatusTokens
      * @param $context
      */
-    public function addStatusToken(&$objTemplate, $realEstate, $context): void
+    public function addStatusToken($validStatusToken, &$arrStatusTokens, $context): void
     {
-        $tokens = StringUtil::deserialize($context->statusTokens);
-
-        if(!$tokens){
-            return;
-        }
-
-        if (in_array('featured', $tokens) && $realEstate->objRealEstate->featuredObject)
+        if (in_array('featured', $validStatusToken) && $context->objRealEstate->featuredObject)
         {
-            $objTemplate->arrStatusTokens = array_merge(
-                $objTemplate->arrStatusTokens,
-                array
-                (
-                    array(
-                        'value' => Translator::translateValue('featuredObject'),
-                        'class' => 'featured'
-                    )
-                )
+            $arrStatusTokens[] = array(
+                'value' => Translator::translateValue('featuredObject'),
+                'class' => 'featured'
             );
         }
     }
