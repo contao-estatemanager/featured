@@ -10,6 +10,7 @@
 
 namespace ContaoEstateManager\Featured;
 
+use Contao\StringUtil;
 use ContaoEstateManager\FilterSession;
 use ContaoEstateManager\Translator;
 use ContaoEstateManager\RealEstateModel;
@@ -28,7 +29,7 @@ class FeaturedObjects
      * @param $intCount
      * @param $context
      */
-    public function countItems(&$intCount, $context)
+    public function countItems(&$intCount, $context): void
     {
         if($context->listMode !== 'featured'){
             return;
@@ -50,7 +51,7 @@ class FeaturedObjects
      * @param $arrOptions
      * @param $context
      */
-    public function fetchItems(&$objRealEstate, &$arrOptions, $context)
+    public function fetchItems(&$objRealEstate, &$arrOptions, $context): void
     {
         if ($context->prependFeaturedObjects)
         {
@@ -76,29 +77,17 @@ class FeaturedObjects
     /**
      * Add status token for featured objects
      *
-     * @param $objTemplate
-     * @param $realEstate
+     * @param $validStatusToken
+     * @param $arrStatusTokens
      * @param $context
      */
-    public function addStatusToken(&$objTemplate, $realEstate, $context)
+    public function addStatusToken($validStatusToken, &$arrStatusTokens, $context): void
     {
-        $tokens = \StringUtil::deserialize($context->statusTokens);
-
-        if(!$tokens){
-            return;
-        }
-        
-        if (in_array('featured', $tokens) && $realEstate->objRealEstate->featuredObject)
+        if (in_array('featured', $validStatusToken) && $context->objRealEstate->featuredObject)
         {
-            $objTemplate->arrStatusTokens = array_merge(
-                $objTemplate->arrStatusTokens,
-                array
-                (
-                    array(
-                        'value' => Translator::translateValue('featuredObject'),
-                        'class' => 'featured'
-                    )
-                )
+            $arrStatusTokens[] = array(
+                'value' => Translator::translateValue('featuredObject'),
+                'class' => 'featured'
             );
         }
     }

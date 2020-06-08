@@ -9,5 +9,5 @@
  */
 if(ContaoEstateManager\Featured\AddonManager::valid()) {
     // Extend estate manager statusTokens field options
-    array_insert($GLOBALS['TL_DCA']['tl_expose_module']['fields']['statusTokens']['options'], -1, array('featured'));
+    $GLOBALS['TL_DCA']['tl_expose_module']['fields']['statusTokens']['options'][] = 'featured';
 }
