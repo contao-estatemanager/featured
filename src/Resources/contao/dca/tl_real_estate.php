@@ -29,7 +29,7 @@ if (AddonManager::valid())
     $GLOBALS['TL_DCA']['tl_real_estate']['list']['operations']['featuredObject'] = [
         'label' => &$GLOBALS['TL_LANG']['tl_real_estate']['featuredObject'],
         'icon' => 'featured.svg',
-        'attributes' => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleFeaturedObject(this,%s)"',
+        'attributes' => 'onclick="Backend.getScrollOffset();"',
         'button_callback' => ['tl_real_estate_featured', 'iconFeaturedObject'],
     ];
 
