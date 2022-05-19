@@ -15,12 +15,12 @@ declare(strict_types=1);
 $GLOBALS['TL_ESTATEMANAGER_ADDONS'][] = ['ContaoEstateManager\Featured', 'AddonManager'];
 
 use ContaoEstateManager\Featured\AddonManager;
+use ContaoEstateManager\Featured\FeaturedObjects;
 
 if (AddonManager::valid())
 {
     // Hooks
-    $GLOBALS['TL_HOOKS']['countItemsRealEstateList'][] = ['ContaoEstateManager\Featured\FeaturedObjects', 'countItems'];
-    $GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'][] = ['ContaoEstateManager\Featured\FeaturedObjects', 'fetchItems'];
-
-    $GLOBALS['TL_HOOKS']['getStatusTokens'][] = ['ContaoEstateManager\Featured\FeaturedObjects', 'addStatusToken'];
+    $GLOBALS['CEM_HOOKS']['countItemsRealEstateList'][] = [FeaturedObjects::class, 'countItems'];
+    $GLOBALS['CEM_HOOKS']['fetchItemsRealEstateList'][] = [FeaturedObjects::class, 'fetchItems'];
+    $GLOBALS['CEM_HOOKS']['getStatusTokens'][] = [FeaturedObjects::class, 'addStatusToken'];
 }
