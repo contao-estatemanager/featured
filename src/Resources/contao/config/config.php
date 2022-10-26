@@ -20,7 +20,7 @@ use ContaoEstateManager\Featured\FeaturedObjects;
 if (AddonManager::valid())
 {
     // Hooks
-    $GLOBALS['CEM_HOOKS']['countItemsRealEstateList'][] = [FeaturedObjects::class, 'countItems'];
-    $GLOBALS['CEM_HOOKS']['fetchItemsRealEstateList'][] = [FeaturedObjects::class, 'fetchItems'];
-    $GLOBALS['CEM_HOOKS']['getStatusTokens'][] = [FeaturedObjects::class, 'addStatusToken'];
+    $GLOBALS['TL_HOOKS']['countItemsRealEstateList'][] = [FeaturedObjects::class, 'countItems'];
+    $GLOBALS['TL_HOOKS']['fetchItemsRealEstateList'][] = [FeaturedObjects::class, 'fetchItems'];
+    $GLOBALS['TL_HOOKS']['getStatusTokens'][] = [FeaturedObjects::class, 'addStatusToken'];
 }
